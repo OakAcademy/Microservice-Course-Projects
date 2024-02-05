@@ -1,0 +1,50 @@
+server:
+  port: 7203
+
+spring:
+  application:
+    name: taskservice
+  boot:
+    admin:
+      client:
+        url: http://localhost:7207
+  rabbitmq:
+    username: oakmicroservice
+    password: oakmicroservice
+    port: '5672'
+    host: localhost
+  datasource:
+    url: jdbc:mysql://localhost:3306/TaskDB
+    username: root
+    password: oakacademy
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+  data:
+    elasticsearch:
+      cluster-node: localhost:9200
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:7201/eureka/
+
+
+ms:
+  rabbit:
+    exchange:
+      name: oakexchange
+    queue:
+      name: oakqueue
+    routing:
+      name: oakrouting
+management:
+  endpoints.web.exposure.include:
+    - '*'
+  tracing:
+    sampling:
+      probability: 1.0

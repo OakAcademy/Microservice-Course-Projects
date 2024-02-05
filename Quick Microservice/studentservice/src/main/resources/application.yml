@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: studentservice
+  config:
+    import: "optional:configserver:http://localhost:8080"
+server:
+  port: 8081
+management:
+  tracing:
+    sampling:
+      probability: 1.0

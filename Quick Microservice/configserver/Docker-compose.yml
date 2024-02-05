@@ -1,0 +1,18 @@
+version: '3.1'
+services:
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: zipkin2
+    restart: always
+    ports:
+      - 9411:9411
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq2
+    restart: always
+    ports:
+      - 5672:5672
+      - 15672:15672
+    environment:
+      - RABBITMQ_DEFAULT_USER=quickmicroservice
+      - RABBITMQ_DEFAULT_PASS=quickmicroservice

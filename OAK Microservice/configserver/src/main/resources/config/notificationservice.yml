@@ -1,0 +1,46 @@
+server:
+  port: 7204
+
+spring:
+  application:
+    name: notificationservice
+  boot:
+    admin:
+      client:
+        url: http://localhost:7207
+
+  datasource:
+    username: postgres
+    password: '12345'
+    url: jdbc:postgresql://localhost:5432/TaskDB
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: 'true'
+    hibernate:
+      ddl-auto: update
+  rabbitmq:
+    username: oakmicroservice
+    password: oakmicroservice
+    port: '5672'
+    host: localhost
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:7201/eureka
+
+ms:
+  rabbit:
+    exchange:
+      name: oakexchange
+    queue:
+      name: oakqueue
+    routing:
+      name: oakrouting
+management:
+  endpoints.web.exposure.include:
+    - '*'
+  tracing:
+    sampling:
+      probability: 1.0

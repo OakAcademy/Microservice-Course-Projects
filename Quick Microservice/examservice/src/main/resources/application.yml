@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: examservice
+  config:
+    import: "optional:configserver:http://localhost:8080"
+  rabbitmq:
+    username: quickmicroservice
+    password: quickmicroservice
+    port: '5672'
+    host: localhost
+server:
+  port: 8082
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+ms:
+  rabbit:
+    exchange:
+      name: quickexchange
+    queue:
+      name: quickqueue
+    routing:
+      name: quickrouting
+

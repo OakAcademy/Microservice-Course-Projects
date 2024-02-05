@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: apigateway
+
+
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: studentservice
+            uri: lb://studentservice
+            predicates:
+              - Path=/students/**
+          - id: examservice
+            uri: lb://examservice
+            predicates:
+              - Path=/exams/**
+          - id: emailservice
+            uri: lb://emailservice
+            predicates:
+              - Path=/emails/**
+
+
+server:
+  port: 8084
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+
+
+
